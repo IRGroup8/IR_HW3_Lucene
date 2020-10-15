@@ -1,4 +1,3 @@
-import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import *
@@ -6,12 +5,13 @@ import json
 
 file = open("group8Indexing.txt", "r")
 text = file.read()
+list = []
 docs = text.split(".I")
 stop_words = set(stopwords.words('english'))
 stemmer = PorterStemmer()
-for doc in docs :
+for doc in docs:
     document = doc.split(".W")
-    if(len(document)>1):
+    if (len(document) > 1):
         docNum = document[0]
         docText = document[1]
         docTokens = word_tokenize(docText)
@@ -20,10 +20,10 @@ for doc in docs :
             if w not in stop_words:
                 filteredTokens.append(stemmer.stem(w))
         x = {
-            "id":docNum,
-            "text":filteredTokens
+            "id": docNum,
+            "text": filteredTokens
         }
-        with open("sample.json", "a") as outfile:
-            json.dump(x, outfile)
-        json.dumps()
-
+        list.append(x)
+with open("normalized.json", "a") as outfile:
+    json.dump(list, outfile)
+    outfile.write("\n")

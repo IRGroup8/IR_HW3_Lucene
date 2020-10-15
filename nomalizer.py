@@ -1,7 +1,9 @@
 from nltk import *
 
-text = open("E:\doc\FUM-units\بازیابی اطلاعات\IR_HW3_Lucene\group8Indexing.txt", "r")
+file = open("group8Indexing.txt", "r")
+text = file.read()
+docs = text.split(".I")
+for doc in docs :
+    print(doc)
+    print("----------")
 
-# docs = text.split(".I")
-
-print(text)

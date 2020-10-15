@@ -1,6 +1,7 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import *
+import json
 
 file = open("group8Indexing.txt", "r")
 text = file.read()
@@ -17,6 +18,11 @@ for doc in docs :
         for w in docTokens:
             if w not in stop_words:
                 filteredTokens.append(stemmer.stem(w))
-        print(docNum)
-        print(filteredTokens)
+        x = {
+            "id":docNum,
+            "text":filteredTokens
+        }
+        with open("sample.json", "a") as outfile:
+            json.dump(x, outfile)
+        json.dumps()
 

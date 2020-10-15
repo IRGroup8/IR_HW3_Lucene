@@ -3,11 +3,12 @@ from nltk import *
 file = open("group8Indexing.txt", "r")
 text = file.read()
 docs = text.split(".I")
-small_docs = []
-for doc in docs:
-    small_docs.append(doc.split(".W"))
+for doc in docs :
+    document = doc.split(".W")
+    #print(document)
+    if(len(document)>1):
+        docNum = document[0]
+        print(docNum)
+        docText = document[1]
+        print(docText)
 
-for doc in small_docs:
-    if (len(doc) > 1):
-        print(doc[1])
-        print("----------")

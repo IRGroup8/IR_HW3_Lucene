@@ -6,7 +6,7 @@ file = open("group8Indexing.txt", "r")
 text = file.read()
 docs = text.split(".I")
 stop_words = set(stopwords.words('english'))
-
+stemmer = PorterStemmer()
 for doc in docs :
     document = doc.split(".W")
     if(len(document)>1):
@@ -16,7 +16,7 @@ for doc in docs :
         filteredTokens = []
         for w in docTokens:
             if w not in stop_words:
-                filteredTokens.append(w)
+                filteredTokens.append(stemmer.stem(w))
         print(docNum)
         print(filteredTokens)
 

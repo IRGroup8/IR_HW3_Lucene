@@ -24,6 +24,6 @@ for doc in docs:
             "text": filteredTokens
         }
         list.append(x)
-with open("normalized.json", "a") as outfile:
+with open("normalized.json", "w") as outfile:
     json.dump(list, outfile)
     outfile.write("\n")

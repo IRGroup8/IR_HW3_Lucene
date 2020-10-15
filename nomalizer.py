@@ -1,14 +1,22 @@
-from nltk import *
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem.porter import *
 
 file = open("group8Indexing.txt", "r")
 text = file.read()
 docs = text.split(".I")
+stop_words = set(stopwords.words('english'))
+
 for doc in docs :
     document = doc.split(".W")
-    #print(document)
     if(len(document)>1):
         docNum = document[0]
-        print(docNum)
         docText = document[1]
-        print(docText)
+        docTokens = word_tokenize(docText)
+        filteredTokens = []
+        for w in docTokens:
+            if w not in stop_words:
+                filteredTokens.append(w)
+        print(docNum)
+        print(filteredTokens)
 
